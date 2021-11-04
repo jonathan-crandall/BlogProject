@@ -1,0 +1,58 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}" type="text/css">
+</head>
+<body>
+    <div id="links">
+        <a href="{% url 'blog:index'%}">Home</a>
+        <a href="{% url 'blog:archives'%}">Archives</a>
+        <a href="{% url 'blog:about'%}">About Me</a>
+        <a href="{% url 'blog:tips'%}">Tech Tips</a>
+    </div>
+    <div id="content">
+        <h1>Blog</h1>
+        <div class="blogpost">
+          <h2>{{blog.title}}</h2>
+          <h5>{{blog.author}}, {{blog.posted}}</h5>
+          <p>
+            {{blog.content}}
+          </p>
+        </div>
+
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action="{% url 'blog:comment' blog.id %}", method="post">
+            {% csrf_token %}
+            <label for="name">Your name: </label>
+            <input id="name" type="text" name="commenter">
+            <br>
+            <label for="email">Your email: </label>
+            <input id="email" type="text" name="email">
+            <br>
+            <label for="comment_content">Your comment: </label>
+            <input id="comment_content" type="text" name="comment_content">
+            <br>
+            <input type="submit" value="OK">
+
+
+        </form>
+        {% if blog.comments_set.all %}
+        <h2>Comments:</h2>
+            {% for comment in blog.comments_set.all reversed %}
+            <div class="blogpost">
+                <h2>{{comment.title}}</h2>
+                <h5>{{comment.commenter}}, {{comment.email}}, {{comment.posted}}</h5>
+                <p>
+                {{comment.content}}
+                </p>
+            </div>
+            {%endfor%}
+        {% else %}
+        <h2>There are no comments</h2>
+        {% endif%}
+    </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="{% static 'blog/style.css' %}" type="text/css">
+  <title>Fred's Blog</title>
+</head>
+
+<body>
+  <div id="links">
+    <a href="{% url 'blog:index'%}">Home</a>
+    <a href="{% url 'blog:archives'%}">Archives</a>
+    <a href="{% url 'blog:about'%}">About Me</a>
+    <a href="{% url 'blog:tips'%}">Tech Tips</a>
+  </div>
+
+
+  <div id="content">
+    <div>Time: {{ time }}</div>
+    <h1>Tech Tips</h1>
+    <p>Here are some descriptions of elements, entities, selectors, and properties in HTML and CSS</p>
+
+    <div class="blogpost">
+      <h2>HTML Elements</h2>
+      <ul>
+        <li><span class="element">&#60;html&#62;:</span>
+          The <span class="element">&#60;html&#62;</span> element is used to start and end documents.
+          This element lets the browser know where to start and stop reading the file. It is neither inline, nor block-level.</li>
+        <li><span class="element">&#60;head&#62;:</span>
+          The <span class="element">&#60;head&#62;</span> element contains information about the document, like its title, the meta element, and
+          any linked documents like CSS or JS files. It is neither inline, nor block-level.
+        </li>
+        <li><span class="element">&#60;title&#62;:</span>
+          The <span class="element">&#60;title&#62;</span> element gives a title to the document that appears on the top of the browser.
+          It is neither inline, nor block-level.
+        </li>
+        <li><span class="element">&#60;meta&#62;:</span>
+          The <span class="element">&#60;meta&#62;</span> element defines metadata about the HTML doc. Nothing in this tag is displayed,
+          it is just information for the browser. It is neither inline, nor block-level.
+        </li>
+        <li><span class="element">&#60;link&#62;:</span>
+          The <span class="element">&#60;link&#62;</span> element links other documents, like CSS or JS documents to your HTML doc in order to
+          use the files together, for formatting or other uses. It is neither inline, nor block-level.
+        </li>
+        <li><span class="element">&#60;body&#62;:</span>
+          The <span class="element">&#60;body&#62;</span> tag contains all of the displayed content for your page. Everything you see on the screen
+          in a webpage is contained in the body. It is neither inline, nor block-level.
+        </li>
+        <li><span class="element">&#60;div&#62;:</span>
+          The <span class="element">&#60;div&#62;</span> tag identifies a section of the document in order to group things or make changes to
+          chunks of the document at once. It's often used for styling its contents. It is considered a block-level element.
+        </li>
+        <li><span class="element">&#60;p&#62;:</span>
+          The <span class="element">&#60;p&#62;</span> element denotes a paragraph, and ignores extra spaces and tabs in its contents.
+          It is considered a block-level element.
+        </li>
+        <li><span class="element">&#60;ol&#62;:</span>
+          The <span class="element">&#60;ol&#62;</span> element creates an ordered list, numbering each line item.
+          These lists contain <span class="element">&#60;li&#62;</span> tags. It is considered a block-level element.
+        </li>
+        <li><span class="element">&#60;ul&#62;:</span>
+          The <span class="element">&#60;ul&#62;</span> tag creates an unordered list, like the one we are currently using, with each item starting with a dot by default.
+          These lists contain <span class="element">&#60;li&#62;</span> tags. It is considered a block-level element.
+        </li>
+        <li><span class="element">&#60;li&#62;:</span>
+          These tags are only used within lists, both ordered and unordered. It is considered a block-level element.
+        </li>
+        <li><span class="element">&#60;img&#62;:</span>
+          The <span class="element">&#60;img&#62;</span> elements are used to link an image into an HTML document. These tags are empty, meaning they have
+          no closing tags. It is considered an inline element.
+        </li>
+      </ul>
+    </div>
+
+    <div class="blogpost">
+      <h2>HTML Entities</h2>
+      <ul>
+        <li><span class="element">&#60;</span> is the less than entity. It is used in HTML to denote the beginning of a tag.</li>
+        <li><span class="element">&#62;</span> is the greater than entity. It is used in HTML to denote the end of a tag.</li>
+      </ul>
+    </div>
+
+    <div class="blogpost">
+      <h2>CSS Selectors</h2>
+      <ul>
+        <li><span class="italic">Element</span> selectors choose specific elements used in a document, and modify the appearence of
+          these elements. In this website, the element selector for img is used to modify all images on the site. I also use it to
+          select all of the <span class="element">&#60;li&#62;</span> tags, and then choose every other tag to change their colors
+          with the nth-child pseudo-selector.</li>
+        <li><span class="italic">Class</span> selectors select specific classes used to identify certain tags in the document.
+          Classes are applied to tags in the attributes section, and are selected in CSS by using a period followed by the class name.
+          In this document, each section of the page is identified by a blogpost class name, so each section can be formatted the same.
+        </li>
+        <li><span class="italic">ID</span> selectors select specific IDs used to identify a particular tag in the document.
+          An ID can be applied to a tag in the attributes section just like classes, and are selected in CSS by using a #,
+          followed by the ID name. In this website, the content div on each page is selected by the content ID</li>
+      </ul>
+    </div>
+    <div class="blogpost">
+      <h2>CSS Properties</h2>
+      <ul>
+        <li>background-color: The background color property determines the color behind the selected HTML element.
+          Any color in hex format can be used, or some common strings describing colors. </li>
+        <li>color: The color property determines text color within an HTML elemnt. The same values can be taken as for the background-color property. </li>
+        <li>font-family: The font family property allows you to select the family of fonts for a given element, changing the text within that element.
+          Families include serif, sans-serif, or even times or courier. If the default font for said family doesn't work in a browser,
+          it will choose another from the same family.</li>
+        <li>font-style: The font-style property allows you to make the text in an element italic or oblique (leaning).</li>
+        <li>font-size: The font-size property allows you to change the size of text within an element. Font sizes can be entered as a number, followed by pt,
+          or in several other formats that are less frequently used. </li>
+        <li>margin: The margin property allows you to create space around an element where other elements can't enter.
+          This helps create whitespace in the design of a page. Values can be accepted in pixels or even percentages of the page size for this property.</li>
+        <li>padding: The padding tag creates space inside of an element between the edge of the element and child elements. Acceptable values for padding are the same as margin</li>
+        <li>width: The width property lets you fix the width of an element to a certain number of pixels or a percentage of the screen size.</li>
+        <li>border-width: The border-width property allows you to specify the width of a border around the element. This can be given in pixels (px).</li>
+        <li>border-style: The border-style property allows you to customize the kind of border around an element. For example, dotted, inset, or groove.</li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>

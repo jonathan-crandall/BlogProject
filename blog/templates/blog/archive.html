@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="{% static 'blog/style.css' %}" type="text/css">
+  <title>Blog</title>
+</head>
+
+<body>
+  <div id="links">
+    <a href="{% url 'blog:index'%}">Home</a>
+    <a href="{% url 'blog:archives'%}">Archives</a>
+    <a href="{% url 'blog:about'%}">About Me</a>
+    <a href="{% url 'blog:tips'%}">Tech Tips</a>
+  </div>
+
+  <div id="content">
+    <h1>Blog Archive</h1>
+    {% if posts_list %}
+      {% for blog in posts_list %}
+        <a href="{% url 'blog:entry' blog.id %}">
+          <div class="blogpost">
+            <h2>{{blog.title}}</h2>
+            <h5>{{blog.author}}, {{blog.posted}}</h5>
+            <p>
+              {{blog.content|truncatewords:100}}
+            </p>
+            <p>
+              <p>
+              <strong>{{blog.comments_set.all|length}} comment{{blog.comments_set.all|pluralize}}</strong>
+              </p>
+            </p>
+          </div>
+        </a>
+      {% endfor %}
+    {% else %}
+      <p>No posts are available.</p>
+    {% endif %}
+  </div>
+</body>
+
+</html>

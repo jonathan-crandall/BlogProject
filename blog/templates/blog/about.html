@@ -1,0 +1,38 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="{% static 'blog/style.css' %}" type="text/css">
+  <title>Blog</title>
+</head>
+
+<body>
+  <div id="links">
+    <a href="{% url 'blog:index'%}">Home</a>
+    <a href="{% url 'blog:archives'%}">Archives</a>
+    <a href="{% url 'blog:about'%}">About Me</a>
+    <a href="{% url 'blog:tips'%}">Tech Tips</a>
+  </div>
+
+
+  <div id="content">
+    <div>Time: {{ time }}</div>
+    <h1>About Me</h1>
+    <img src="{% static 'blog/portrait.jpg' %}" alt=""/>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </div>
+
+
+
+</body>
+
+</html>
